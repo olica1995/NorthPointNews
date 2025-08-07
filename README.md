@@ -266,7 +266,85 @@
           <article class="trending-card">
             <h3>Global Climate Initiatives</h3>
             <p class="summary">Countries unite to combat climate change with ambitious policies and green tech...</p>
-carousel = document.getElementById('trendingCarousel');
+            <p class="full-story">Countries around the world have united to combat climate change with ambitious environmental policies and investments in green technology. A recent multi-nation summit produced a coordinated roadmap that includes zero-emission targets, major funding for climate research by 2030, and policy reforms to encourage sustainable industries.</p>
+            <button class="toggle-summary">Read More</button>
+          </article>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button onclick="changeSlide(-1)">Prev</button>
+        <button onclick="changeSlide(1)">Next</button>
+      </div>
+    </section>
+
+    <section class="latest-news" aria-label="Latest News" style="margin-top: 3rem;">
+      <h2>Latest News</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80" alt="Technology Update" />
+          <div class="content">
+            <h2>Breakthrough in Renewable Energy</h2>
+            <p class="summary">Scientists develop new solar cells with higher efficiency and lower cost...</p>
+            <p class="full-story">Scientists have developed next-generation solar cells that significantly increase energy conversion efficiency while reducing production costs. This breakthrough could accelerate the adoption of renewable energy globally, reducing dependency on fossil fuels and combating climate change.</p>
+            <button class="toggle-summary">Read More</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="City Infrastructure" />
+          <div class="content">
+            <h2>Smart Cities Expansion</h2>
+            <p class="summary">Urban areas embrace smart technology to improve services and reduce waste...</p>
+            <p class="full-story">Cities worldwide are adopting smart technology systems to optimize resource use, improve public safety, and enhance transportation networks. These advancements lead to more sustainable, livable urban environments and better quality of life for residents.</p>
+            <button class="toggle-summary">Read More</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=800&q=80" alt="Healthcare Innovation" />
+          <div class="content">
+            <h2>Healthcare Innovation Advances</h2>
+            <p class="summary">New AI tools assist doctors in early disease detection and personalized treatments...</p>
+            <p class="full-story">The integration of AI into healthcare is revolutionizing diagnosis and treatment. Innovative tools analyze patient data rapidly, enabling early detection of diseases and tailoring personalized treatment plans to improve patient outcomes.</p>
+            <button class="toggle-summary">Read More</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>© 2025 North Point News. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="mailto:northpointnews92@gmail.com">📧 Email: northpointnews92@gmail.com</a>
+        <a href="https://wa.me/256777626808" target="_blank" rel="noopener noreferrer">💬 WhatsApp: +256 777 626808</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.toggle-summary').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('article');
+        const summary = card.querySelector('.summary');
+        const full = card.querySelector('.full-story');
+
+        const isExpanded = full.style.display === 'block';
+
+        if (isExpanded) {
+          summary.style.display = 'block';
+          full.style.display = 'none';
+          button.textContent = 'Read More';
+        } else {
+          summary.style.display = 'none';
+          full.style.display = 'block';
+          button.textContent = 'Read Less';
+        }
+      });
+    });
+
+    const carousel = document.getElementById('trendingCarousel');
     const trendingCards = carousel.querySelectorAll('.trending-card');
     let currentIndex = 0;
 
