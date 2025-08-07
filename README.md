@@ -289,7 +289,7 @@
 <body>
   <header>
     <div style="display: flex; justify-content: center; align-items: center;">
-      <img src="north point news logo.png" alt="North Point News Logo" class="logo-img" />
+      <img src="north point news logo.jpg" alt="North Point News Logo" class="logo-img" />
     </div>
   </header>
 
