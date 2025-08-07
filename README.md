@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #d9fdd3, #f0fff4);
@@ -18,6 +19,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     header {
@@ -30,6 +32,9 @@
 
     .logo-img {
       max-height: 60px;
+      width: auto;
+      height: auto;
+      max-width: 100%;
       user-select: none;
     }
 
@@ -67,11 +72,13 @@
     .carousel-wrapper {
       position: relative;
       overflow: hidden;
+      max-width: 100%;
     }
 
     .trending-carousel {
       display: flex;
       transition: transform 0.6s ease-in-out;
+      width: 100%;
     }
 
     .trending-card {
@@ -96,6 +103,7 @@
       font-size: 0.95rem;
       color: #374151;
       line-height: 1.4;
+      word-wrap: break-word;
     }
 
     .full-story {
@@ -112,6 +120,9 @@
       font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      min-height: 44px;
+      min-width: 44px;
+      font-size: 1rem;
     }
 
     .trending-card button:hover {
@@ -132,6 +143,8 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: 600;
+      min-height: 44px;
+      min-width: 44px;
     }
 
     .carousel-nav button:hover {
@@ -165,7 +178,7 @@
 
     .card img {
       width: 100%;
-      height: 200px;
+      height: auto;
       object-fit: cover;
       user-select: none;
     }
@@ -194,6 +207,8 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       align-self: flex-start;
+      min-height: 44px;
+      min-width: 44px;
     }
 
     .button:hover {
@@ -237,36 +252,74 @@
     .footer-links a:hover {
       text-decoration: underline;
     }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      .trending-card,
+      .card .content {
+        padding: 16px 12px;
+      }
+
+      .carousel-nav button {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+
+      .trending-card h3,
+      .content h2 {
+        font-size: 1rem;
+      }
+
+      .summary,
+      .full-story {
+        font-size: 0.9rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="north point news logo.jpg" alt="North Point News Logo" class="logo-img" />
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <img src="north point news logo.png" alt="North Point News Logo" class="logo-img" />
+    </div>
   </header>
 
   <main>
+    <!-- Trending Section -->
     <section class="trending" aria-label="Trending Stories">
       <h2>Trending Stories</h2>
       <div class="carousel-wrapper">
         <div class="trending-carousel" id="trendingCarousel">
+          <!-- Slide 1 -->
           <article class="trending-card">
             <h3>Olica Felix Introduces Innovations in Amolatar</h3>
             <p class="summary">Felix Olica, a young innovative youth from Akwon Subcounty in Amolatar district, has begun creating online platforms...</p>
-            <p class="full-story">Felix Olica, a young and innovative youth from Akwon Subcounty in Amolatar district, has started transforming the local media landscape. Through his entrepreneurial initiative, he has launched Kyoga TV and Olix Radio, both accessible at <a href="https://www.kyogatv.com" target="_blank">www.kyogatv.com</a>. These platforms aim to empower local voices, share regional stories, and provide a space for community dialogue. Olica says his vision is to inspire young people to use technology creatively to address social challenges and bring development to rural communities.</p>
+            <p class="full-story">Felix Olica, a young and innovative youth from Akwon Subcounty in Amolatar district, has started transforming the local media landscape. Through his entrepreneurial initiative, he has launched Kyoga TV and Olix Radio, both accessible at <a href="https://www.kyogatv.com" target="_blank">www.kyogatv.com</a>. These platforms aim to empower local voices, share regional stories, and provide a space for community dialogue.</p>
             <button class="toggle-summary">Read More</button>
           </article>
 
+          <!-- Slide 2 -->
           <article class="trending-card">
             <h3>Economic Growth Hits Record High</h3>
             <p class="summary">The economy has surpassed expectations, with new job opportunities emerging worldwide...</p>
-            <p class="full-story">The economy has surpassed expectations, with new job opportunities emerging worldwide. Recent fiscal strategies and trade agreements have contributed to this growth, with several sectors reporting double-digit improvements. Economists are optimistic that sustained investment will continue to drive expansion in emerging markets and beyond.</p>
+            <p class="full-story">Recent fiscal strategies and trade agreements have contributed to growth, with several sectors reporting double-digit improvements.</p>
             <button class="toggle-summary">Read More</button>
           </article>
 
+          <!-- Slide 3 -->
           <article class="trending-card">
             <h3>Global Climate Initiatives</h3>
             <p class="summary">Countries unite to combat climate change with ambitious policies and green tech...</p>
-            <p class="full-story">Countries around the world have united to combat climate change with ambitious environmental policies and investments in green technology. A recent multi-nation summit produced a coordinated roadmap that includes zero-emission targets, major funding for climate research by 2030, and policy reforms to encourage sustainable industries.</p>
+            <p class="full-story">Countries around the world have united to combat climate change with ambitious environmental policies and investments in green technology.</p>
             <button class="toggle-summary">Read More</button>
           </article>
         </div>
@@ -277,7 +330,8 @@
       </div>
     </section>
 
-    <section class="latest-news" aria-label="Latest News" style="margin-top: 3rem;">
+    <!-- Latest News Grid -->
+    <section class="latest-news" aria-label="Latest News">
       <h2>Latest News</h2>
       <div class="grid">
         <article class="card">
@@ -285,7 +339,7 @@
           <div class="content">
             <h2>Breakthrough in Renewable Energy</h2>
             <p class="summary">Scientists develop new solar cells with higher efficiency and lower cost...</p>
-            <p class="full-story">Scientists have developed next-generation solar cells that significantly increase energy conversion efficiency while reducing production costs. This breakthrough could accelerate the adoption of renewable energy globally, reducing dependency on fossil fuels and combating climate change.</p>
+            <p class="full-story">Next-gen solar cells increase energy conversion and lower production costs—potentially accelerating renewable energy adoption globally.</p>
             <button class="toggle-summary">Read More</button>
           </div>
         </article>
@@ -295,7 +349,7 @@
           <div class="content">
             <h2>Smart Cities Expansion</h2>
             <p class="summary">Urban areas embrace smart technology to improve services and reduce waste...</p>
-            <p class="full-story">Cities worldwide are adopting smart technology systems to optimize resource use, improve public safety, and enhance transportation networks. These advancements lead to more sustainable, livable urban environments and better quality of life for residents.</p>
+            <p class="full-story">Cities worldwide are adopting smart technology to optimize resources, improve public safety, and enhance transportation networks.</p>
             <button class="toggle-summary">Read More</button>
           </div>
         </article>
@@ -305,7 +359,7 @@
           <div class="content">
             <h2>Healthcare Innovation Advances</h2>
             <p class="summary">New AI tools assist doctors in early disease detection and personalized treatments...</p>
-            <p class="full-story">The integration of AI into healthcare is revolutionizing diagnosis and treatment. Innovative tools analyze patient data rapidly, enabling early detection of diseases and tailoring personalized treatment plans to improve patient outcomes.</p>
+            <p class="full-story">AI integration in healthcare is improving diagnosis, enabling early disease detection and personalized treatment plans.</p>
             <button class="toggle-summary">Read More</button>
           </div>
         </article>
@@ -329,18 +383,11 @@
         const card = button.closest('article');
         const summary = card.querySelector('.summary');
         const full = card.querySelector('.full-story');
-
         const isExpanded = full.style.display === 'block';
 
-        if (isExpanded) {
-          summary.style.display = 'block';
-          full.style.display = 'none';
-          button.textContent = 'Read More';
-        } else {
-          summary.style.display = 'none';
-          full.style.display = 'block';
-          button.textContent = 'Read Less';
-        }
+        summary.style.display = isExpanded ? 'block' : 'none';
+        full.style.display = isExpanded ? 'none' : 'block';
+        button.textContent = isExpanded ? 'Read More' : 'Read Less';
       });
     });
 
