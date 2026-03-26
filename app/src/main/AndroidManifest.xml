@@ -8,13 +8,13 @@
 
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".TvPlayerActivity" />
-        <activity android:name=".RadioPlayerActivity" />
+        <activity android:name=".TvPlayerActivity"/>
+        <activity android:name=".RadioPlayerActivity"/>
 
     </application>
 
