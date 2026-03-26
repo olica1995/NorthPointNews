@@ -1,1 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
 
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="120dp"
+        android:src="@drawable/kyoga_logo" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp">
+
+        <Button
+            android:id="@+id/btn_tv"
+            android:text="WATCH TV"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primaryRed"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/btn_radio"
+            android:text="SHORES FM"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/skyBlue"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
