@@ -12,17 +12,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        # This is a pre-configured environment that won't get stuck on SDK downloads
+        # This is the most stable version in 2026
         uses: ArtemSerebrennikov/buildozer-action@v1
         id: buildozer
         with:
           buildozer_version: master
           python_version: 3.10
-          # This command tells it to just build the debug APK
+          # We tell it exactly what to do here
           buildozer_command: android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Kyoga-TV-Android-App
-          path: bin/*.apk
+          path: ./*.apk
