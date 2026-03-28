@@ -1,4 +1,5 @@
 name: Build Kyoga TV Android
+
 on:
   push:
     branches: [ "main" ]
@@ -7,16 +8,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Build with Buildozer
+        # Note the Capital A and S in the name below
         uses: ArtemSerebrennikov/buildozer-action@v1
         id: buildozer
         with:
           buildozer_version: master
           python_version: 3.10
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Kyoga-TV-Android-App
-          path: bin/*.apk
+          path: ./*.apk
