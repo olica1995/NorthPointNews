@@ -6,17 +6,15 @@ source.dir = .
 source.include_exts = py,png,jpg,ico
 version = 1.0
 
-# Keeping requirements minimal for the first successful flow
-requirements = python3,kivy==2.3.0,android
+# Only the essentials
+requirements = python3,kivy==2.3.0
 
 orientation = portrait
 fullscreen = 1
 android.permissions = INTERNET, ACCESS_NETWORK_STATE
-
-# Your Icon
 icon.filename = logo.ico
 
-# These settings prevent the "License" and "Space" errors
+# Vital for the server build
 android.accept_sdk_license = True
 android.api = 33
 android.minapi = 21
