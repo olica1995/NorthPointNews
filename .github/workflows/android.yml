@@ -11,24 +11,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Build with Buildozer
+        # This is a pre-configured environment that won't get stuck on SDK downloads
+        uses: ArtemSerebrennikov/buildozer-action@v1
+        id: buildozer
         with:
-          python-version: '3.10'
+          buildozer_version: master
+          python_version: 3.10
+          # This command tells it to just build the debug APK
+          buildozer_command: android debug
 
-      - name: Install Build Tools
-        run: |
-          sudo apt update
-          sudo apt install -y build-essential git python3-dev ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
-          pip install --user --upgrade buildozer cython virtualenv
-
-      - name: Build APK with Buildozer
-        run: |
-          # This command creates the license folder and auto-accepts them
-          mkdir -p ~/.android && touch ~/.android/repositories.cfg
-          yes | /home/runner/.local/bin/buildozer -v android debug
-        
-      - name: Upload Finished APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Kyoga-TV-Android-App
