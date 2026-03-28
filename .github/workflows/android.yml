@@ -24,10 +24,10 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
-          # This command starts the actual Android compilation
-          # 'yes |' automatically accepts the Android SDK licenses
+          # This command creates the license folder and auto-accepts them
+          mkdir -p ~/.android && touch ~/.android/repositories.cfg
           yes | /home/runner/.local/bin/buildozer -v android debug
-
+        
       - name: Upload Finished APK
         uses: actions/upload-artifact@v4
         with:
