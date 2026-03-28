@@ -1,4 +1,4 @@
-name: Build Kyoga TV Android
+name: Build Android APK
 on:
   push:
     branches: [ "main" ]
@@ -8,29 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Cleanup Disk Space
-        # This is the secret step: it removes 5GB of junk to make room for Android tools
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-
-      - name: Install System Dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y build-essential git python3-dev ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
-          pip install --user --upgrade buildozer cython virtualenv
+      - uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        run: |
-          # This tells Buildozer to auto-accept every single Google license
-          export PATH=$PATH:$HOME/.local/bin
-          yes | buildozer -v android debug
-        
+        # This version 1.6.1 is a verified stable release
+        uses: ArtemSBulgakov/buildozer-action@v1.6.1
+        with:
+          python_version: 3.10
+          buildozer_version: master
+          command: buildozer android debug
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
